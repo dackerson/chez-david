@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Canvas from './components/Canvas'
+
 import type { OrderItem } from './components/OrderItem'
 import DrSodaItem from './components/DrSodaItem'
 import AppleItem from './components/AppleItem'
@@ -95,11 +97,8 @@ function App() {
         )}
       </div>
       <div>
-        {/* <h2>Acquisitions Over Years</h2>
-        <canvas id="chart" width={250}></canvas>
-        <Pie data={data} 
-          plugins={plugins}/> */}
-      </div>
+      <Canvas />
+     </div>
     </>
   )
 }
