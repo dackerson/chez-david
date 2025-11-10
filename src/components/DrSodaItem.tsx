@@ -24,7 +24,7 @@ export default function DrSodaItem({ currentOrder, setCurrentOrder }: DrSodaItem
             if (value) {
                 next = next.map(item =>
                     item.name === 'Dr. Soda'
-                    ? { ...item, quantity: item.quantity + 1 }
+                    ? { ...item, quantity: item.quantity! + 1 }
                     : item
                 )
             }

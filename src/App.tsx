@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -10,6 +10,7 @@ import AppleItem from './components/AppleItem'
 
 import { Pie } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
+import BirthdayCakeItem from './components/BirthdayCakeItem'
 
 const imageURLs = [
   'https://i.sstatic.net/2RAv2.png',
@@ -76,6 +77,9 @@ const plugins = [{
 
 function App() {
   const [currentOrder, setCurrentOrder] = useState<OrderItem[]>([])
+  const [showCanvas, setShowCanvas] = useState(false)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [cakeBlob, setCakeBlob] = useState<Blob | null>(null);
 
   return (
     <>
@@ -84,6 +88,10 @@ function App() {
         <div className="card">
           <DrSodaItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
           <AppleItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
+          <BirthdayCakeItem setShowCanvas={setShowCanvas} />
+        </div>
+        <div>
+          { showCanvas? <Canvas setShowCanvas={setShowCanvas} setCakeBlob={setCakeBlob} setCurrentOrder={setCurrentOrder} /> : null }
         </div>
       </div>
       <div id='current-order'>
@@ -92,13 +100,16 @@ function App() {
           <div>Empty</div>
         ) : (
           currentOrder.map(item => (
-            <div key={item.name}>{item.name} — {item.quantity}</div>
+            <div key={item.name}>
+              {item.name} — {item.quantity ? item.quantity : ''}
+              {item.imageBlob ?
+                <img src={ item.imageBlob ?  URL.createObjectURL(item.imageBlob) : '' }
+                  alt={item.name} width={50} />
+                : null}
+            </div>
           ))
         )}
       </div>
-      <div>
-      <Canvas />
-     </div>
     </>
   )
 }

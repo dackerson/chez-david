@@ -1,6 +1,7 @@
 type OrderItem = {
   name: string;
-  quantity: number;
+  quantity?: number;
+  imageBlob?: Blob;
 }
 
 export type { OrderItem };
