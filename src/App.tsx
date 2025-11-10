@@ -1,16 +1,19 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Canvas from './components/Canvas'
+import WorldMap from './components/WorldMap'
+
+import 'leaflet/dist/leaflet.css'
 
 import type { OrderItem } from './components/OrderItem'
 import DrSodaItem from './components/DrSodaItem'
 import AppleItem from './components/AppleItem'
-
-import { Pie } from "react-chartjs-2";
-import Chart from 'chart.js/auto';
 import BirthdayCakeItem from './components/BirthdayCakeItem'
+import WorldFoodItem from './components/WorldFoodItem'
+
+import Chart from 'chart.js/auto';
 
 const imageURLs = [
   'https://i.sstatic.net/2RAv2.png',
@@ -78,8 +81,10 @@ const plugins = [{
 function App() {
   const [currentOrder, setCurrentOrder] = useState<OrderItem[]>([])
   const [showCanvas, setShowCanvas] = useState(false)
+  const [showWorldMap, setShowWorldMap] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cakeBlob, setCakeBlob] = useState<Blob | null>(null);
+
 
   return (
     <>
@@ -89,9 +94,11 @@ function App() {
           <DrSodaItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
           <AppleItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
           <BirthdayCakeItem setShowCanvas={setShowCanvas} />
+          <WorldFoodItem setShowWorldMap={setShowWorldMap} />
         </div>
         <div>
           { showCanvas? <Canvas setShowCanvas={setShowCanvas} setCakeBlob={setCakeBlob} setCurrentOrder={setCurrentOrder} /> : null }
+          { showWorldMap? <WorldMap setCurrentOrder={setCurrentOrder} /> : null }
         </div>
       </div>
       <div id='current-order'>
@@ -110,6 +117,7 @@ function App() {
           ))
         )}
       </div>
+      <div id="map"></div>
     </>
   )
 }

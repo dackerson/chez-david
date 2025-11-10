@@ -10,9 +10,9 @@ export default function BirthdayCakeItem({ setShowCanvas }: BirthdayCakeItemProp
         setShowCanvas(true);
     }
     return (
-        <>
+        <div>
             <button onClick={onClick}>Add</button>
-            <span>BirthdayCake</span>
-        </>
+            <span>Birthday Cake</span>
+        </div>
     )
 }

@@ -1,5 +1,5 @@
 #root {
-  padding: 20px;
+  padding: 10px;
 }
 
 .logo {
@@ -51,3 +51,5 @@
 .canvas {
   border: 1px solid black;
 }
+
+#map { height: 180px; }
