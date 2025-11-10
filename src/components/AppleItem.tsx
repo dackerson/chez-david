@@ -19,7 +19,7 @@ export default function AppleItem({ currentOrder, setCurrentOrder }: AppleItemPr
             if (value) {
                 next = next.map(item =>
                     item.name === 'Apple'
-                    ? { ...item, quantity: item.quantity + 1 }
+                    ? { ...item, quantity: item.quantity! + 1 }
                     : item
                 )
             }
