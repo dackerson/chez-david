@@ -30,7 +30,7 @@ function App() {
         </div>
         <div>
           { showCanvas? <Canvas setShowCanvas={setShowCanvas} setCakeBlob={setCakeBlob} setCurrentOrder={setCurrentOrder} /> : null }
-          { showWorldMap? <WorldMap setCurrentOrder={setCurrentOrder} /> : null }
+          { showWorldMap? <WorldMap setShowWorldMap={setShowWorldMap} setCurrentOrder={setCurrentOrder} /> : null }
         </div>
       </div>
       <div id='current-order'>

@@ -6,6 +6,7 @@ import type { OrderItem } from './OrderItem';
 import worldDishes from '../world-dishes.tsx'
 
 type WorldMapProps = {
+    setShowWorldMap: React.Dispatch<React.SetStateAction<boolean>>
     setCurrentOrder?: React.Dispatch<React.SetStateAction<OrderItem[]>>
 }
 
@@ -39,6 +40,7 @@ export default function WorldMap(worldMapProps: WorldMapProps) {
       <button onClick={() => {
         if (!worldMapProps.setCurrentOrder) return;
         addOrderToDish(location?.lat ?? 0, location?.lng ?? 0, worldMapProps.setCurrentOrder);
+        worldMapProps.setShowWorldMap(false);
       }}>
         Add a Dish From This Country to your Order
       </button>
