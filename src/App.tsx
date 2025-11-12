@@ -4,7 +4,6 @@ import Canvas from './components/Canvas'
 import WorldMap from './components/WorldMap'
 
 import 'leaflet/dist/leaflet.css'
-import RapierTest from './components/RapierTest'
 
 import type { OrderItem } from './components/OrderItem'
 import DrSodaItem from './components/DrSodaItem'
@@ -37,7 +36,6 @@ function App() {
           { showCanvas? <Canvas setShowCanvas={setShowCanvas} setCakeBlob={setCakeBlob} setCurrentOrder={setCurrentOrder} /> : null }
           { showWorldMap? <WorldMap setShowWorldMap={setShowWorldMap} setCurrentOrder={setCurrentOrder} /> : null }
           { showRoulette? <Roulette setShowRoulette={setShowRoulette} setCurrentOrder={setCurrentOrder} /> : null }
-          <RapierTest />
         </div>
       </div>
       <div id='current-order'>
