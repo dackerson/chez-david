@@ -10,11 +10,14 @@ import DrSodaItem from './components/DrSodaItem'
 import AppleItem from './components/AppleItem'
 import BirthdayCakeItem from './components/BirthdayCakeItem'
 import WorldFoodItem from './components/WorldFoodItem'
+import Roulette from './components/Roulette'
+import RouletteDessertItem from './components/RouletteDessertItem'
 
 function App() {
   const [currentOrder, setCurrentOrder] = useState<OrderItem[]>([])
   const [showCanvas, setShowCanvas] = useState(false)
   const [showWorldMap, setShowWorldMap] = useState(false)
+  const [showRoulette, setShowRoulette] = useState(false)
   const [cakeBlob, setCakeBlob] = useState<Blob | null>(null);
 
 
@@ -27,10 +30,12 @@ function App() {
           <AppleItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
           <BirthdayCakeItem setShowCanvas={setShowCanvas} />
           <WorldFoodItem setShowWorldMap={setShowWorldMap} />
+          <RouletteDessertItem setShowRoulette={setShowRoulette} />
         </div>
         <div>
           { showCanvas? <Canvas setShowCanvas={setShowCanvas} setCakeBlob={setCakeBlob} setCurrentOrder={setCurrentOrder} /> : null }
           { showWorldMap? <WorldMap setShowWorldMap={setShowWorldMap} setCurrentOrder={setCurrentOrder} /> : null }
+          { showRoulette? <Roulette setShowRoulette={setShowRoulette} setCurrentOrder={setCurrentOrder} /> : null }
         </div>
       </div>
       <div id='current-order'>

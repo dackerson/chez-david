@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import LocationMarker from './LocationMarker';
 import type { OrderItem } from './OrderItem';
 
-import worldDishes from '../world-dishes.tsx'
+import worldDishes from './world-dishes'
 
 type WorldMapProps = {
     setShowWorldMap: React.Dispatch<React.SetStateAction<boolean>>
