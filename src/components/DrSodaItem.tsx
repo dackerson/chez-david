@@ -2,11 +2,10 @@ import React from 'react'
 import type {OrderItem} from './OrderItem.tsx'
 
 type DrSodaItemProps = {
-  currentOrder: OrderItem[]
   setCurrentOrder?: React.Dispatch<React.SetStateAction<OrderItem[]>>
 }
 
-export default function DrSodaItem({ currentOrder, setCurrentOrder }: DrSodaItemProps) {
+export default function DrSodaItem({ setCurrentOrder }: DrSodaItemProps) {
     function addItem(e : React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if (!setCurrentOrder) return

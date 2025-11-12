@@ -32,7 +32,7 @@ export default function Canvas(props: CanvasProps) {
     ctx.current.beginPath();
   }, [canvasRef])
 
-    function Draw(e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) {      
+    function Draw() {      
       if (!ctx.current) return;
       ctx.current.strokeStyle = '#0000FF';
       ctx.current.lineWidth = 5;
@@ -61,7 +61,7 @@ export default function Canvas(props: CanvasProps) {
       // onMouseEnter={(e) => SetPos(e)}
       onMouseDown={(e) => { SetPos(e); setIsDrawing(true) }}
       onMouseUp={(e) => { SetPos(e); setIsDrawing(false) }}
-      onMouseMove={(e) => { Draw(e); SetPos(e) }}
+      onMouseMove={(e) => { Draw(); SetPos(e) }}
        />
     <button onClick={() => {
       if (canvasRef.current) {

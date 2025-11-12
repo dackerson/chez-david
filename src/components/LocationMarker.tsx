@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMapEvents, Marker, Popup } from 'react-leaflet'
+import { useMapEvents, Marker } from 'react-leaflet'
 import L from 'leaflet'
 
 type LocationMarkerProps = {
@@ -8,7 +8,7 @@ type LocationMarkerProps = {
 }
 
 export default function LocationMarker(locationMarkerProps: LocationMarkerProps) {
-  const map = useMapEvents({
+  useMapEvents({
     click(e) {
         locationMarkerProps.setLocation(e.latlng)
     }

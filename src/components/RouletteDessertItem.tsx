@@ -1,5 +1,4 @@
 import React from 'react'
-import type {OrderItem} from './OrderItem.tsx'
 
 type RouletteDessertItemProps = {
   setShowRoulette: React.Dispatch<React.SetStateAction<boolean>>

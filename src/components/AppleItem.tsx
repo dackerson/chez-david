@@ -2,11 +2,10 @@ import React from 'react'
 import type {OrderItem} from './OrderItem.tsx'
 
 type AppleItemProps = {
-  currentOrder: OrderItem[]
   setCurrentOrder?: React.Dispatch<React.SetStateAction<OrderItem[]>>
 }
 
-export default function AppleItem({ currentOrder, setCurrentOrder }: AppleItemProps) {
+export default function AppleItem({ setCurrentOrder }: AppleItemProps) {
     function addItem(e : React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if (!setCurrentOrder) return

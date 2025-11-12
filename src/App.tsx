@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Canvas from './components/Canvas'
 import WorldMap from './components/WorldMap'
 
 import 'leaflet/dist/leaflet.css'
+import RapierTest from './components/RapierTest'
 
 import type { OrderItem } from './components/OrderItem'
 import DrSodaItem from './components/DrSodaItem'
@@ -18,7 +19,7 @@ function App() {
   const [showCanvas, setShowCanvas] = useState(false)
   const [showWorldMap, setShowWorldMap] = useState(false)
   const [showRoulette, setShowRoulette] = useState(false)
-  const [cakeBlob, setCakeBlob] = useState<Blob | null>(null);
+  const [_, setCakeBlob] = useState<Blob | null>(null);
 
 
   return (
@@ -26,8 +27,8 @@ function App() {
       <div id='items-list'>
         <h2>Add to your order</h2>
         <div className="card">
-          <DrSodaItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
-          <AppleItem currentOrder={currentOrder} setCurrentOrder={setCurrentOrder} />
+          <DrSodaItem setCurrentOrder={setCurrentOrder} />
+          <AppleItem setCurrentOrder={setCurrentOrder} />
           <BirthdayCakeItem setShowCanvas={setShowCanvas} />
           <WorldFoodItem setShowWorldMap={setShowWorldMap} />
           <RouletteDessertItem setShowRoulette={setShowRoulette} />
@@ -36,6 +37,7 @@ function App() {
           { showCanvas? <Canvas setShowCanvas={setShowCanvas} setCakeBlob={setCakeBlob} setCurrentOrder={setCurrentOrder} /> : null }
           { showWorldMap? <WorldMap setShowWorldMap={setShowWorldMap} setCurrentOrder={setCurrentOrder} /> : null }
           { showRoulette? <Roulette setShowRoulette={setShowRoulette} setCurrentOrder={setCurrentOrder} /> : null }
+          <RapierTest />
         </div>
       </div>
       <div id='current-order'>
