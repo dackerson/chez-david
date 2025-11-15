@@ -4,6 +4,7 @@ import Canvas from './components/Canvas'
 import WorldMap from './components/WorldMap'
 
 import 'leaflet/dist/leaflet.css'
+import Matter from 'matter-js'
 
 import type { OrderItem } from './components/OrderItem'
 import DrSodaItem from './components/DrSodaItem'
@@ -20,6 +21,14 @@ function App() {
   const [showRoulette, setShowRoulette] = useState(false)
   const [_, setCakeBlob] = useState<Blob | null>(null);
 
+//   var canvas = document.querySelector("canvas") as HTMLCanvasElement;
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+// const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+
+// ctx.font = "30px Arial";
+// ctx.fillStyle = "white";
+// ctx.fillText("Hello World", 150, 150);
 
   return (
     <>
@@ -54,7 +63,6 @@ function App() {
           ))
         )}
       </div>
-      <div id="map"></div>
     </>
   )
 }
