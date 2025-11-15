@@ -7,7 +7,7 @@ export default defineConfig({
   base: (() => {
       switch(process.env.NODE_ENV){
         case 'amplify':
-            return "https://main.dl9hykqwudssf.amplifyapp.com/"
+            return "https://prod.dl9hykqwudssf.amplifyapp.com/"
         default: // github pages
             return "https://dackerson.github.io/chez-david/"
       }
