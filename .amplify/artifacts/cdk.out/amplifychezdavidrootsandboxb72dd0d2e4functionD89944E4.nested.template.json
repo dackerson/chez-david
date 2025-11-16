@@ -1,97 +1,120 @@
 {
- "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.18.0\",\"stackType\":\"root\",\"metadata\":{}}",
- "Metadata": {
-  "AWS::Amplify::Platform": {
-   "version": "1",
-   "stackOutputs": [
-    "deploymentType",
-    "region"
-   ]
-  },
-  "AWS::Amplify::Function": {
-   "version": "1",
-   "stackOutputs": [
-    "definedFunctions"
-   ]
-  }
- },
- "Outputs": {
-  "deploymentType": {
-   "Value": "sandbox"
-  },
-  "region": {
-   "Value": {
-    "Ref": "AWS::Region"
-   }
-  },
-  "definedFunctions": {
-   "Value": {
-    "Fn::Join": [
-     "",
-     [
-      "[\"",
-      {
-       "Fn::GetAtt": [
-        "function1351588B",
-        "Outputs.amplifychezdavidrootsandboxb72dd0d2e4functionapifunctionlambdaDA657B66Ref"
-       ]
-      },
-      "\"]"
-     ]
-    ]
-   }
-  }
- },
+ "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.15.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
  "Resources": {
-  "function1351588B": {
-   "Type": "AWS::CloudFormation::Stack",
+  "apifunctionlambdaServiceRole44624931": {
+   "Type": "AWS::IAM::Role",
    "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
     "Tags": [
      {
       "Key": "amplify:deployment-type",
       "Value": "sandbox"
      },
      {
+      "Key": "amplify:friendly-name",
+      "Value": "api_function"
+     },
+     {
       "Key": "created-by",
       "Value": "amplify"
      }
-    ],
-    "TemplateURL": {
-     "Fn::Join": [
-      "",
-      [
-       "https://s3.",
-       {
-        "Ref": "AWS::Region"
-       },
-       ".",
-       {
-        "Ref": "AWS::URLSuffix"
-       },
-       "/",
-       {
-        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
-       },
-       "/72002fa6029056e91c2275e9029d57042fe614ab62f3817e3b5fb4053fb4deab.json"
-      ]
-     ]
-    }
+    ]
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "amplify-chezdavid-root-sandbox-b72dd0d2e4/function.NestedStack/function.NestedStackResource",
-    "aws:asset:path": "amplifychezdavidrootsandboxb72dd0d2e4functionD89944E4.nested.template.json",
-    "aws:asset:property": "TemplateURL"
+    "aws:cdk:path": "amplify-chezdavid-root-sandbox-b72dd0d2e4/function/api_function-lambda/ServiceRole/Resource"
+   }
+  },
+  "apifunctionlambda27189226": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "x86_64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "01c0c1fb6dc09119a8a4ebe9ac6c77ca4f163f5b76e254016833219863eff96d.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AMPLIFY_SSM_ENV_CONFIG": "{}"
+     }
+    },
+    "EphemeralStorage": {
+     "Size": 512
+    },
+    "Handler": "index.handler",
+    "MemorySize": 512,
+    "Role": {
+     "Fn::GetAtt": [
+      "apifunctionlambdaServiceRole44624931",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs20.x",
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "api_function"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ],
+    "Timeout": 3
+   },
+   "DependsOn": [
+    "apifunctionlambdaServiceRole44624931"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-chezdavid-root-sandbox-b72dd0d2e4/function/api_function-lambda/Resource",
+    "aws:asset:path": "asset.01c0c1fb6dc09119a8a4ebe9ac6c77ca4f163f5b76e254016833219863eff96d",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
    }
   },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIy0TNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYGeoYgfVnFmZm6RaV5JZm5qXpBEBoAx67BYFQAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zXOOw6DMAwG4LN0Ny4NvUBB6tgBDoBMYlB4JBJOyoC4exVQp2/6HwqVemJ+o00ybaZsth3uH5bApgmkJ6BN2n2mpTPUOm94FPycvKPTwXoHlhbcaz8zVL1LHiBFSyIcBF8JkALLqCcOJQnD1YZV7/4dB9QsPq6a4Qw0gQbrhgPSIo5y/6ocH+nnKNZma3TBLoz15Q9LifWDxAAAAA=="
    },
    "Metadata": {
-    "aws:cdk:path": "amplify-chezdavid-root-sandbox-b72dd0d2e4/CDKMetadata/Default"
+    "aws:cdk:path": "amplify-chezdavid-root-sandbox-b72dd0d2e4/function/CDKMetadata/Default"
    },
    "Condition": "CDKMetadataAvailable"
   }
@@ -362,38 +385,11 @@
    ]
   }
  },
- "Parameters": {
-  "BootstrapVersion": {
-   "Type": "AWS::SSM::Parameter::Value<String>",
-   "Default": "/cdk-bootstrap/hnb659fds/version",
-   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
-  }
- },
- "Rules": {
-  "CheckBootstrapVersion": {
-   "Assertions": [
-    {
-     "Assert": {
-      "Fn::Not": [
-       {
-        "Fn::Contains": [
-         [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5"
-         ],
-         {
-          "Ref": "BootstrapVersion"
-         }
-        ]
-       }
-      ]
-     },
-     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
-    }
-   ]
+ "Outputs": {
+  "amplifychezdavidrootsandboxb72dd0d2e4functionapifunctionlambdaDA657B66Ref": {
+   "Value": {
+    "Ref": "apifunctionlambda27189226"
+   }
   }
  }
 }
