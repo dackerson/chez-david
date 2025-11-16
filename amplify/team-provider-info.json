@@ -10,6 +10,11 @@
       "StackName": "amplify-chezdavid-dev-764e4",
       "StackId": "arn:aws:cloudformation:us-east-2:706658514556:stack/amplify-chezdavid-dev-764e4/0605f210-c323-11f0-b539-02b703db700d",
       "AmplifyAppId": "d25z52aik0csuv"
+    },
+    "categories": {
+      "function": {
+        "chezdavidfunction": {}
+      }
     }
   }
 }
