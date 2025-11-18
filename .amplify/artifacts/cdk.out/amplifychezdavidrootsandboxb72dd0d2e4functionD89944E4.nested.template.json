@@ -111,7 +111,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zXOOw6DMAwG4LN0Ny4NvUBB6tgBDoBMYlB4JBJOyoC4exVQp2/6HwqVemJ+o00ybaZsth3uH5bApgmkJ6BN2n2mpTPUOm94FPycvKPTwXoHlhbcaz8zVL1LHiBFSyIcBF8JkALLqCcOJQnD1YZV7/4dB9QsPq6a4Qw0gQbrhgPSIo5y/6ocH+nnKNZma3TBLoz15Q9LifWDxAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zXNOw6DMBBF0bWkHybEpEkZkFJSwALQYA/IfGyJsUOB2HsEKNWp3n0KlXpieqNVEm3GZLItbiVLYFMH0iPQKs020dwaapw3PAiWJ5/odLDegaUZt8pPDEXnDneQrCERDoLvA5AM86hHDjkJw1XDonP/xg4Vi4+LZjgHdaDeun6H4xEHuX9Vio8XprdBrE2W6IKdGavLH41O27nEAAAA"
    },
    "Metadata": {
     "aws:cdk:path": "amplify-chezdavid-root-sandbox-b72dd0d2e4/function/CDKMetadata/Default"
